@@ -1294,12 +1294,12 @@ const getWoWConfig = async (env, client) => {
         singboxOutbound.peer_public_key = wgConfig.account.config.peers[0].public_key;
         singboxOutbound.reserved = wgConfig.account.config.client_id;
         singboxOutbound.private_key = wgConfig.privateKey;
-        singboxOutbound.tag = i === 1 ? '💦 Warp' : '💦 Warp on Warp 🚀';    
+        singboxOutbound.tag = i === 1 ? '爱国 Warp' : '爱国 Warp on Warp 🚀';    
         
         if (i === 1) {
             delete singboxOutbound.detour;
         } else {
-            singboxOutbound.detour = '💦 Warp';
+            singboxOutbound.detour = '爱国 Warp';
         }
 
         singboxOutbounds.push(singboxOutbound);
