@@ -823,18 +823,19 @@ const generateRemark = (index, port) => {
     switch (index) {
         case 0:
         case 1:
-            remark = `💦 BPB - Domain_${index + 1} : ${port}`;
+            remark = ` 爱国 BPB - Domain_${index + 1} : ${port}`;
+            remark = ` 爱国 BPB - Domain_${index + 1} : ${port}`;
             break;
         case 2:
         case 3:
-            remark = `💦 BPB - IPv4_${index - 1} : ${port}`;
+            remark = `爱国 BPB - IPv4_${index - 1} : ${port}`;
             break;
         case 4:
         case 5:
-            remark = `💦 BPB - IPv6_${index - 3} : ${port}`;
+            remark = `爱国 BPB - IPv6_${index - 3} : ${port}`;
             break;
         default:
-            remark = `💦 BPB - Clean IP_${index - 5} : ${port}`;
+            remark = `爱国 BPB - Clean IP_${index - 5} : ${port}`;
             break;
     }
 
@@ -966,7 +967,7 @@ const buildWorkerLessConfig = async (env, client) => {
     fakeOutbound.tag = 'fake-outbound';
 
     let fragConfig = structuredClone(xrayConfigTemp);
-    fragConfig.remarks  = '💦 BPB Frag - WorkerLess ⭐'
+    fragConfig.remarks  = '爱国 BPB Frag - WorkerLess ⭐'
     fragConfig.dns = await buildDNSObject(remoteDNS, localDNS, blockAds, bypassIran, blockPorn, true);
     fragConfig.outbounds[0].settings.domainStrategy = 'UseIP';
     fragConfig.outbounds[0].settings.fragment.length = `${lengthMin}-${lengthMax}`;
@@ -1108,7 +1109,7 @@ const getFragmentConfigs = async (env, hostName, client) => {
     };
 
     let bestPing = structuredClone(xrayConfigTemp);
-    bestPing.remarks = '💦 BPB Frag - Best Ping 💥';
+    bestPing.remarks = '爱国 BPB Frag - Best Ping 💥';
     bestPing.dns = await buildDNSObject(remoteDNS, localDNS, blockAds, bypassIran, blockPorn);
     bestPing.outbounds[0].settings.fragment.length = `${lengthMin}-${lengthMax}`;
     bestPing.outbounds[0].settings.fragment.interval = `${intervalMin}-${intervalMax}`;
@@ -1129,7 +1130,7 @@ const getFragmentConfigs = async (env, hostName, client) => {
     }
 
     let bestFragment = structuredClone(xrayConfigTemp);
-    bestFragment.remarks = '💦 BPB Frag - Best Fragment 😎';
+    bestFragment.remarks = '爱国 BPB Frag - Best Fragment 😎';
     bestFragment.dns = await buildDNSObject(remoteDNS, localDNS, blockAds, bypassIran, blockPorn);
     bestFragment.outbounds.splice(0,1);
     bestFragValues.forEach( (fragLength, index) => {
@@ -1304,7 +1305,7 @@ const getWoWConfig = async (env, client) => {
         singboxOutbounds.push(singboxOutbound);
     }
 
-    wowConfigXray.remarks = '💦 BPB - Warp on Warp 🚀';
+    wowConfigXray.remarks = '爱国 BPB - Warp on Warp 🚀';
     wowConfigXray.dns = await buildDNSObject(remoteDNS, localDNS, blockAds, bypassIran, blockPorn);
     wowConfigXray.routing.rules = buildRoutingRules(localDNS, blockAds, bypassIran, blockPorn, bypassLAN, false, false);
     wowConfigXray.outbounds.splice(0,1);
@@ -1315,13 +1316,13 @@ const getWoWConfig = async (env, client) => {
     let warpConfigXray = structuredClone(wowConfigXray);
     warpConfigXray.outbounds.splice(0,1);
     warpConfigXray.routing.rules[warpConfigXray.routing.rules.length - 1].outboundTag = 'warp-ir';
-    warpConfigXray.remarks = '💦 BPB - Warp';
+    warpConfigXray.remarks = '爱国 BPB - Warp';
 
     wowConfigSingbox.dns.servers[0].address = remoteDNS;
     wowConfigSingbox.dns.servers[1].address = localDNS;
     wowConfigSingbox.dns.rules[0].domain = 'engage.cloudflareclient.com';
     wowConfigSingbox.outbounds.splice(1,1);
-    wowConfigSingbox.outbounds[0].outbounds = ['💦 Warp on Warp 🚀', '💦 Warp'];
+    wowConfigSingbox.outbounds[0].outbounds = ['爱国 Warp on Warp 🚀', '爱国 Warp'];
     wowConfigSingbox.outbounds = [...wowConfigSingbox.outbounds, ...singboxOutbounds];
     delete wowConfigSingbox.route.final;
 
@@ -1653,11 +1654,11 @@ const renderHomePage = async (env, hostName, fragConfigs) => {
             <tr>
                 <td>
                     ${config.address === 'Best-Ping' 
-                        ? `<div  style="justify-content: center;"><span><b>💦 Best-Ping 💥</b></span></div>` 
+                        ? `<div  style="justify-content: center;"><span><b>爱国 Best-Ping 💥</b></span></div>` 
                         : config.address === 'WorkerLess'
-                            ? `<div  style="justify-content: center;"><span><b>💦 WorkerLess ⭐</b></span></div>`
+                            ? `<div  style="justify-content: center;"><span><b>爱国 WorkerLess ⭐</b></span></div>`
                             : config.address === 'Best-Fragment'
-                                ? `<div  style="justify-content: center;"><span><b>💦 Best-Fragment 😎</b></span></div>`
+                                ? `<div  style="justify-content: center;"><span><b>爱国 Best-Fragment 😎</b></span></div>`
                                 : config.address
                     }
                 </td>
@@ -1914,7 +1915,7 @@ const renderHomePage = async (env, hostName, fragConfigs) => {
 	</head>
 	
 	<body>
-		<h1>BPB Panel <span style="font-size: smaller;">${panelVersion}</span> 💦</h1>
+		<h1>BPB Panel <span style="font-size: smaller;">${panelVersion}</span> 爱国</h1>
 		<div class="form-container">
             <h2>FRAGMENT SETTINGS ⚙️</h2>
 			<form id="configForm">
@@ -2560,7 +2561,7 @@ const renderLoginPage = async () => {
     </head>
     <body>
         <div class="container">
-            <h1>BPB Panel <span style="font-size: smaller;">${panelVersion}</span> 💦</h1>
+            <h1>BPB Panel <span style="font-size: smaller;">${panelVersion}</span> 爱国</h1>
             <div class="form-container">
                 <h2>User Login</h2>
                 <form id="loginForm">
@@ -2631,7 +2632,7 @@ const renderErrorPage = (message, error, refer) => {
 
     <body>
         <div id="error-container">
-            <h1>BPB Panel <span style="font-size: smaller;">${panelVersion}</span> 💦</h1>
+            <h1>BPB Panel <span style="font-size: smaller;">${panelVersion}</span> 爱国</h1>
             <div id="error-message">
                 <h2>${message} ${refer 
                     ? 'Please try again or refer to <a href="https://github.com/bia-pain-bache/BPB-Worker-Panel/blob/main/README.md">documents</a>' 
@@ -2922,11 +2923,11 @@ const singboxConfigTemp = {
         {
             type: "selector",
             tag: "proxy",
-            outbounds: ["💦 Best-Ping 💥"]
+            outbounds: ["爱国 Best-Ping 💥"]
         },
         {
             type: "urltest",
-            tag: "💦 Best-Ping 💥",
+            tag: "爱国 Best-Ping 💥",
             outbounds: [],
             url: "https://www.gstatic.com/generate_204",
             interval: "3m",
